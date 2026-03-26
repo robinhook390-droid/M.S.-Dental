@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>M.S. Dental Clinic – Dr. Sarib Alam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:   #0d7a72;
+      --teal2:  #13a89e;
+      --gold:   #c8a84b;
+      --cream:  #f9f5ee;
+      --dark:   #0e1a1a;
+      --mid:    #2b4040;
+      --light:  #e8f4f3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 6vw;
+      background: rgba(249,245,238,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(13,122,114,0.15);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 900;
+      color: var(--teal); letter-spacing: .04em;
+    }
+    .logo span { color: var(--gold); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      text-decoration: none; color: var(--mid);
+      font-size: .9rem; font-weight: 500; letter-spacing: .05em;
+      transition: color .2s;
+    }
+    nav ul a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal); color: #fff !important;
+      padding: 8px 20px; border-radius: 50px;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--teal2) !important; color: #fff !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 6vw 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; right: -10%; top: -5%;
+      width: 65%; height: 120%;
+      background: radial-gradient(ellipse at 60% 40%, var(--light) 0%, var(--teal) 70%);
+      border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+      opacity: .45;
+      animation: morphBlob 8s ease-in-out infinite alternate;
+    }
+    @keyframes morphBlob {
+      0%   { border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; }
+      100% { border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%; }
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--gold); color: #fff;
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 50px;
+      margin-bottom: 1.4rem;
+      animation: fadeUp .7s ease both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.1; font-weight: 900;
+      color: var(--dark);
+      animation: fadeUp .7s .15s ease both;
+    }
+    .hero h1 em { color: var(--teal); font-style: normal; }
+    .hero p {
+      margin-top: 1.2rem; max-width: 420px;
+      font-size: 1rem; line-height: 1.7; color: var(--mid);
+      animation: fadeUp .7s .3s ease both;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      margin-top: 2rem;
+      animation: fadeUp .7s .45s ease both;
+    }
+    .btn-primary {
+      background: var(--teal); color: #fff;
+      padding: 14px 32px; border-radius: 50px;
+      text-decoration: none; font-weight: 600;
+      font-size: .95rem; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 24px rgba(13,122,114,.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(13,122,114,.4); }
+    .btn-outline {
+      border: 2px solid var(--teal); color: var(--teal);
+      padding: 12px 28px; border-radius: 50px;
+      text-decoration: none; font-weight: 600;
+      font-size: .95rem; transition: background .2s, color .2s;
+    }
+    .btn-outline:hover { background: var(--teal); color: #fff; }
+
+    .hero-visual {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; align-items: center;
+      animation: fadeUp .9s .2s ease both;
+    }
+    .hero-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 30px 80px rgba(13,122,114,.18);
+      width: min(360px, 90%);
+      text-align: center;
+      position: relative;
+    }
+    .hero-card::before {
+      content: '🦷';
+      font-size: 3.5rem;
+      display: block; margin-bottom: 1rem;
+    }
+    .hero-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--dark); margin-bottom: .4rem;
+    }
+    .hero-card p { font-size: .9rem; color: #666; margin-bottom: 1.2rem; }
+    .stars { color: #f4b400; font-size: 1.3rem; letter-spacing: .1em; }
+    .rating-text { font-size: .82rem; color: #888; margin-top: .3rem; }
+    .badge {
+      position: absolute; top: -14px; right: -14px;
+      background: var(--gold); color: #fff;
+      border-radius: 50%; width: 64px; height: 64px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-weight: 700; line-height: 1.1; font-size: .8rem;
+      box-shadow: 0 6px 18px rgba(200,168,75,.4);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 80px 6vw; }
+    .section-label {
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--teal2); margin-bottom: .6rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900; color: var(--dark);
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--mid); font-size: 1rem; line-height: 1.7; max-width: 520px; }
+
+    /* ── IMAGE SLIDER ── */
+    #gallery {
+      background: var(--dark);
+      padding: 60px 0;
+      overflow: hidden;
+    }
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding: 0 6vw;
+    }
+    .gallery-header .section-label { color: var(--teal2); }
+    .gallery-header .section-title { color: #fff; }
+
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .slider-track {
+      display: flex;
+      gap: 1.2rem;
+      padding: 0 6vw;
+      transition: transform .5s cubic-bezier(.4,0,.2,1);
+    }
+    .slide {
+      flex: 0 0 calc(33.33% - 1rem);
+      min-width: calc(33.33% - 1rem);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      box-shadow: 0 16px 48px rgba(0,0,0,.4);
+    }
+    .slide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform .4s ease;
+      display: block;
+      background: var(--light);
+    }
+    .slide:hover img { transform: scale(1.05); }
+    .slide-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.75));
+      color: #fff; padding: 1.5rem 1rem .9rem;
+      font-size: .85rem; font-weight: 500;
+      opacity: 0; transition: opacity .3s;
+    }
+    .slide:hover .slide-caption { opacity: 1; }
+
+    .slider-controls {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; margin-top: 2rem;
+    }
+    .slider-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%; border: 2px solid rgba(255,255,255,.3);
+      background: rgba(255,255,255,.08);
+      color: #fff; font-size: 1.1rem;
+      cursor: pointer; transition: background .2s, border-color .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slider-btn:hover { background: var(--teal); border-color: var(--teal); }
+    .slider-dots { display: flex; gap: .5rem; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,.3);
+      cursor: pointer; transition: background .2s, transform .2s;
+    }
+    .dot.active { background: var(--teal2); transform: scale(1.3); }
+
+    @media (max-width: 768px) {
+      .slide { flex: 0 0 calc(80% - 1rem); min-width: calc(80% - 1rem); }
+    }
+
+    /* ── SERVICES ── */
+    #services { background: #fff; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      transition: transform .3s, box-shadow .3s;
+      border: 1px solid transparent;
+      cursor: default;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(13,122,114,.12);
+      border-color: var(--light);
+    }
+    .svc-icon { font-size: 2.2rem; margin-bottom: .9rem; }
+    .service-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--dark); margin-bottom: .5rem;
+    }
+    .service-card p { font-size: .88rem; color: #666; line-height: 1.6; }
+
+    /* ── WHY US ── */
+    #why { background: var(--cream); }
+    .why-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .why-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1.2rem; }
+    .why-list li {
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .why-check {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--teal); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: .9rem;
+    }
+    .why-list li h5 { font-weight: 600; color: var(--dark); margin-bottom: .2rem; }
+    .why-list li p { font-size: .88rem; color: #666; line-height: 1.6; }
+    .why-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+    }
+    .stat-box {
+      background: #fff; border-radius: 20px;
+      padding: 1.8rem 1.5rem; text-align: center;
+      box-shadow: 0 8px 30px rgba(13,122,114,.08);
+    }
+    .stat-box .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem; font-weight: 900; color: var(--teal);
+      line-height: 1;
+    }
+    .stat-box p { font-size: .82rem; color: #888; margin-top: .4rem; }
+
+    /* ── DOCTOR ── */
+    #doctor { background: var(--teal); color: #fff; }
+    .doctor-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    #doctor .section-label { color: var(--gold); }
+    #doctor .section-title { color: #fff; }
+    #doctor .section-sub { color: rgba(255,255,255,.75); }
+    .doctor-avatar {
+      background: rgba(255,255,255,.12);
+      border-radius: 28px;
+      padding: 3rem 2rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.2);
+    }
+    .doctor-avatar .avatar-icon { font-size: 5rem; margin-bottom: 1rem; }
+    .doctor-avatar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700; color: #fff;
+    }
+    .doctor-avatar p { font-size: .88rem; color: rgba(255,255,255,.7); margin-top: .3rem; }
+    .doc-tags { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
+    .doc-tag {
+      background: rgba(255,255,255,.15); color: #fff;
+      font-size: .8rem; padding: 6px 14px; border-radius: 50px;
+      border: 1px solid rgba(255,255,255,.25);
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: #fff; }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .contact-info { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.4rem; }
+    .contact-row {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .contact-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--light); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .contact-row h5 { font-weight: 600; color: var(--dark); font-size: .92rem; }
+    .contact-row p { font-size: .88rem; color: #666; margin-top: .15rem; line-height: 1.5; }
+    .contact-row a { color: var(--teal); text-decoration: none; }
+
+    .contact-form { background: var(--cream); border-radius: 24px; padding: 2.5rem 2rem; }
+    .contact-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 1.5rem;
+    }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: .82rem; font-weight: 600; color: var(--mid); margin-bottom: .4rem; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid rgba(13,122,114,.2);
+      border-radius: 12px;
+      background: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      color: var(--dark);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--teal);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%;
+      background: var(--teal); color: #fff;
+      border: none; border-radius: 12px;
+      padding: 14px; font-size: .95rem; font-weight: 600;
+      cursor: pointer; transition: background .2s;
+    }
+    .form-submit:hover { background: var(--teal2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,.6);
+      text-align: center; padding: 2.5rem 6vw;
+    }
+    footer .foot-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 900;
+      color: #fff; margin-bottom: .6rem;
+    }
+    footer .foot-logo span { color: var(--gold); }
+    footer p { font-size: .85rem; line-height: 1.7; }
+    footer a { color: var(--teal2); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding: 100px 6vw 60px; }
+      .hero-visual { display: none; }
+      nav ul { display: none; }
+      .why-inner, .doctor-inner, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .why-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">M.S.<span> Dental</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#doctor">Doctor</a></li>
+    <li><a href="#contact" class="nav-cta">Book Appointment</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <span class="hero-tag">⭐ 5.0 Rated Dental Clinic</span>
+    <h1>Your Smile,<br/>Our <em>Passion</em></h1>
+    <p>Ghaziabad ki sabse trusted dental clinic. Dr. Sarib Alam ke saath paayen world-class dental care, bilkul aapke ghar ke paas.</p>
+    <div class="hero-btns">
+      <a href="tel:08586097245" class="btn-primary">📞 Call Now</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="badge">5.0<br/>★</div>
+      <h3>M.S. Dental Clinic</h3>
+      <p>Dr. Sarib Alam – Expert Dentist</p>
+      <div class="stars">★★★★★</div>
+      <div class="rating-text">Trusted by 500+ Happy Patients</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY SLIDER -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div class="section-label">Our Clinic</div>
+    <div class="section-title">Dekhein Hamari World-Class Facility</div>
+  </div>
+  <div class="slider-wrapper">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80" alt="Dentist treating patient" />
+        <div class="slide-caption">Expert Care by Dr. Sarib Alam</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=600&q=80" alt="Dental clinic interior" />
+        <div class="slide-caption">Clean & Modern Clinic</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80" alt="Dentist with patient" />
+        <div class="slide-caption">Gentle & Painless Treatment</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="Happy patient smiling" />
+        <div class="slide-caption">500+ Happy Smiles</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=600&q=80" alt="Dental checkup" />
+        <div class="slide-caption">Thorough Dental Checkup</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" alt="Modern dental equipment" />
+        <div class="slide-caption">Sterilized Modern Equipment</div>
+      </div>
+    </div>
+  </div>
+  <div class="slider-controls">
+    <button class="slider-btn" id="prevBtn">&#8592;</button>
+    <div class="slider-dots" id="sliderDots"></div>
+    <button class="slider-btn" id="nextBtn">&#8594;</button>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Offer</div>
+  <div class="section-title">Complete Dental<br/>Care Solutions</div>
+  <p class="section-sub">Hamare clinic mein sabhi dental problems ka expert solution milta hai — modern equipment ke saath.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="svc-icon">🦷</div>
+      <h4>Tooth Filling</h4>
+      <p>Cavity aur damage ko painlessly theek karte hain latest composite materials se.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">✨</div>
+      <h4>Teeth Whitening</h4>
+      <p>Professional whitening se paayein chamakte, healthy daant — ek hi session mein.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🔧</div>
+      <h4>Root Canal</h4>
+      <p>Advanced RCT treatment jo infection ko door kare bina dard ke.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">👑</div>
+      <h4>Dental Crown</h4>
+      <p>Toot-e ya weak teeth ke liye durable, natural-looking crowns.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">😁</div>
+      <h4>Braces & Alignment</h4>
+      <p>Tedhe daanton ko seedha karo — metal aur clear braces dono available.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🧼</div>
+      <h4>Scaling & Cleaning</h4>
+      <p>Deep cleaning se gum disease rokein aur fresh breath paayen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-inner">
+    <div>
+      <div class="section-label">Why Choose Us</div>
+      <div class="section-title">Aap Ka Bharosa,<br/>Humari Zimmedaari</div>
+      <ul class="why-list">
+        <li>
+          <div class="why-check">✓</div>
+          <div>
+            <h5>Modern Equipment</h5>
+            <p>Latest dental technology se safe aur accurate treatment diya jaata hai.</p>
+          </div>
+        </li>
+        <li>
+          <div class="why-check">✓</div>
+          <div>
+            <h5>Experienced Doctor</h5>
+            <p>Dr. Sarib Alam ka years ka experience aapki smile ko best banata hai.</p>
+          </div>
+        </li>
+        <li>
+          <div class="why-check">✓</div>
+          <div>
+            <h5>Affordable Pricing</h5>
+            <p>Quality treatment jo aapke budget mein fit ho — no hidden charges.</p>
+          </div>
+        </li>
+        <li>
+          <div class="why-check">✓</div>
+          <div>
+            <h5>Hygienic & Safe</h5>
+            <p>Strict sterilization protocols se 100% safe environment.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="why-stats">
+      <div class="stat-box">
+        <div class="num">500+</div>
+        <p>Happy Patients</p>
+      </div>
+      <div class="stat-box">
+        <div class="num">5.0</div>
+        <p>Google Rating</p>
+      </div>
+      <div class="stat-box">
+        <div class="num">10+</div>
+        <p>Years Experience</p>
+      </div>
+      <div class="stat-box">
+        <div class="num">15+</div>
+        <p>Services Available</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTOR -->
+<section id="doctor">
+  <div class="doctor-inner">
+    <div class="doctor-avatar">
+      <div class="avatar-icon">👨‍⚕️</div>
+      <h3>Dr. Sarib Alam</h3>
+      <p>BDS, Expert Dentist</p>
+      <p style="margin-top:.8rem;font-size:.82rem;color:rgba(255,255,255,.6);">M.S. Dental Clinic, Ghaziabad</p>
+    </div>
+    <div>
+      <div class="section-label">Meet Your Doctor</div>
+      <div class="section-title">Dr. Sarib Alam</div>
+      <p class="section-sub">Dr. Sarib Alam ek highly qualified aur compassionate dentist hain jo har patient ko personalized care dete hain. Unka goal hai ki har koi dard-free, confident smile ke saath jaaye.</p>
+      <div class="doc-tags">
+        <span class="doc-tag">🦷 General Dentistry</span>
+        <span class="doc-tag">✨ Cosmetic Dentistry</span>
+        <span class="doc-tag">🔧 Endodontics</span>
+        <span class="doc-tag">😁 Orthodontics</span>
+        <span class="doc-tag">👑 Prosthodontics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label">Get In Touch</div>
+      <div class="section-title">Appointment<br/>Book Karein</div>
+      <p class="section-sub">Aaj hi hamse contact karein aur apni smile ki journey shuru karein.</p>
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h5>Address</h5>
+            <p>P7VJ+8F9, Eid Gah Rd, Nasbandi Colony,<br/>Delhi, Ghaziabad, Uttar Pradesh 201102</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h5>Phone</h5>
+            <p><a href="tel:08586097245">085860 97245</a></p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h5>Timing</h5>
+            <p>Monday – Saturday: 10:00 AM – 8:00 PM<br/>Sunday: By Appointment</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Appointment Request</h3>
+      <div class="form-group">
+        <label>Aapka Naam</label>
+        <input type="text" placeholder="Apna naam likhein" />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 XXXXXXXXXX" />
+      </div>
+      <div class="form-group">
+        <label>Service</label>
+        <select>
+          <option>-- Service chunein --</option>
+          <option>Tooth Filling</option>
+          <option>Teeth Whitening</option>
+          <option>Root Canal</option>
+          <option>Dental Crown</option>
+          <option>Braces</option>
+          <option>Scaling & Cleaning</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (Optional)</label>
+        <textarea placeholder="Koi bhi problem ya question..."></textarea>
+      </div>
+      <button class="form-submit" onclick="alert('Shukriya! Hum aapko jald call karenge. 😊')">Send Appointment Request</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">M.S.<span> Dental Clinic</span></div>
+  <p>P7VJ+8F9, Eid Gah Rd, Nasbandi Colony, Ghaziabad, UP 201102<br/>
+  📞 <a href="tel:08586097245">085860 97245</a> &nbsp;|&nbsp; Dr. Sarib Alam</p>
+  <p style="margin-top:1rem;font-size:.78rem;opacity:.5;">© 2025 M.S. Dental Clinic. All rights reserved.</p>
+</footer>
+
+<script>
+  const track = document.getElementById('sliderTrack');
+  const dotsContainer = document.getElementById('sliderDots');
+  const slides = track.querySelectorAll('.slide');
+  const isMobile = () => window.innerWidth <= 768;
+  const visibleCount = () => isMobile() ? 1 : 3;
+  const totalSteps = () => slides.length - visibleCount();
+  let current = 0;
+  let autoTimer;
+
+  // Create dots
+  for (let i = 0; i <= totalSteps(); i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  }
+
+  function goTo(index) {
+    current = Math.max(0, Math.min(index, totalSteps()));
+    const slideWidth = slides[0].offsetWidth + 19.2; // gap
+    track.style.transform = `translateX(-${current * slideWidth}px)`;
+    dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  document.getElementById('nextBtn').addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => {
+      current = current >= totalSteps() ? 0 : current + 1;
+      goTo(current);
+    }, 3500);
+  }
+  resetAuto();
+  window.addEventListener('resize', () => goTo(0));
+
+  // Image fallback
+  document.querySelectorAll('.slide img').forEach(img => {
+    img.onerror = function() {
+      this.style.display = 'none';
+      this.parentElement.style.background = 'linear-gradient(135deg, var(--light), var(--teal))';
+      this.parentElement.innerHTML += `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;">🦷</div>`;
+    };
+  });
+</script>
+</body>
+</html>
